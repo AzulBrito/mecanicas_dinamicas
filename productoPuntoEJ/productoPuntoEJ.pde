@@ -13,6 +13,8 @@ void draw() {
   dibujarPJ();
   dibujarPunto();
   vectorResta();
+   PVector direccionAjustada = PVector.sub(vectorResta, posicionPJ);
+  println(direccionAjustada.x, direccionAjustada.y);
 }
 public void dibujarPJ(){
    posicionPJ.set(mouseX, mouseY);
