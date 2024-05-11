@@ -26,7 +26,7 @@ void setup() {
   Vector B = new Vector(4, -1);
   Vector C = new Vector(5, 2);
   
-  // Calculo el punto D como la suma de los vectores AB y AC
+  // Calculo el punto D como la suma de los vectores AC
   Vector AC = C.subtract(A);
   Vector D = B.add(AC);
   
