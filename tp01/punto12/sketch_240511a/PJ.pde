@@ -24,9 +24,4 @@ class PJ{
    x=mouseX;
    y=mouseY;
   }
-  
-   void apuntarHacia(Vector2 direccion) {
-    direccionX = direccion.x;
-    direccionY = direccion.y;
-  }
 }

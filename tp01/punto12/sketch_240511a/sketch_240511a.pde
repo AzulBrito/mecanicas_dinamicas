@@ -19,8 +19,8 @@ void draw(){
  calcularDireccion();
  fill(0);
   text("direccion pj: (" + direccionX + ", " + direccionY + ")", 10, 20);
-  stroke(255, 0, 0);  // Color rojo para la línea
-  strokeWeight(2);  // Grosor de la línea
+   stroke(255, 0, 0);  
+  strokeWeight(2);
   line(pj.x, pj.y, pj.x + direccionX * 50, pj.y + direccionY * 50);
 }
 
