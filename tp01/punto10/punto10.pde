@@ -2,7 +2,7 @@ class Vector {
   float x;
   float y;
   
-  // Constructor 
+  //Constructor 
   Vector(float x, float y) {
     this.x = x;
     this.y = y;
@@ -19,7 +19,7 @@ class Vector {
 
 void setup() {
   size(400, 400);
-  background(255);
+  background(0);
   
   // Defini los puntos
   Vector A = new Vector(-1, -2);
@@ -27,7 +27,6 @@ void setup() {
   Vector C = new Vector(5, 2);
   
   // Calculo el punto D como la suma de los vectores AB y AC
-  Vector AB = B.subtract(A);
   Vector AC = C.subtract(A);
   Vector D = B.add(AC);
   
