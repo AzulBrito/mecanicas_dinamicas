@@ -4,29 +4,36 @@ boolean detected = false;
 float bulletSpeed = 5;
 float bulletX, bulletY;
 ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+PImage imagenPj;
+PImage fuego;
+PImage malo;
+
 
 void setup() {
   size(800, 400);
   //Inicializar jugador y enemigo
   player = new GameObject(width/2, height/2, 0);
   enemy = new GameObject(width/4, height/4, PI/4);
-  noStroke();
+  imagenPj= loadImage("pj.png");
+  fuego= loadImage("fuego.png");
+  malo= loadImage("bowser.png");
 }
 
 void draw() {
   background(200);
-  player.x = mouseX;
-  player.y = mouseY;
+   player.actualizarPosicion(mouseX, mouseY);
   
   //Dibujar jugador y enemigo
-  drawGameObject(player, color(0, 0, 255));
-  drawGameObject(enemy, color(255, 0, 0));
+  enemigo();
+  imagenPj.resize(50,50);
+  image(imagenPj, player.x, player.y);
+  
   detected = detectPlayer(enemy, player);
   if (detected) {
     attack(enemy, player);
   }
   
-  // Mostrar mensaje si detectado
+  //Mostrar mensaje si detectado en el centro de la pantalla
   if (detected) {
     fill(0);
     textSize(20);
@@ -36,14 +43,14 @@ void draw() {
   
    for (Bullet bullet : bullets) {
     bullet.move();
-    fill(255, 0, 0);
-    ellipse(bullet.x, bullet.y, 10, 10);
+    image(fuego,bullet.x,bullet.y);
+    fuego.resize(30,30);
   }
 }
 
-void drawGameObject(GameObject obj, color col) {
-  fill(col);
-  ellipse(obj.x, obj.y, 20, 20);  // Representación visual de los gameObject
+void enemigo(){
+  image(malo,enemy.x, enemy.y);
+  malo.resize(80,80);
 }
 
 boolean detectPlayer(GameObject enemy, GameObject player) {
