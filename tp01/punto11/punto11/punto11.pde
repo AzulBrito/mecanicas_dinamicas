@@ -1,7 +1,11 @@
+GameObject player;
+GameObject enemy;
+boolean detected = false;
+
 class GameObject {
   float x;
   float y;
-  float direction;  // Ángulo de dirección en radianes
+  float direction;
   
   GameObject(float x, float y, float direction) {
     this.x = x;
@@ -9,10 +13,20 @@ class GameObject {
     this.direction = direction;
   }
 }
+class Bullet {
+  float x;
+  float y;
+  float speed;
+  float direction;
+  
+  Bullet(float x, float y, float speed, float direction) {
+    this.x = x;
+    this.y = y;
+    this.speed = speed;
+    this.direction = direction;
+  }
 
-GameObject player;
-GameObject enemy;
-boolean detected = false;
+
 
 void setup() {
   size(800, 400);
@@ -67,6 +81,21 @@ boolean detectPlayer(GameObject enemy, GameObject player) {
 }
 
 void attack(GameObject enemy, GameObject player) {
-  // Implementar la lógica de ataque aquí
-  // Por ejemplo, crear una bola de fuego que se mueva hacia el jugador
+  float enemyPlayerX = player.x - enemy.x;
+  float enemyPlayerY = player.y - enemy.y;
+  float magnitude = sqrt(enemyPlayerX * enemyPlayerX + enemyPlayerY * enemyPlayerY);
+  float bulletDirectionX = enemyPlayerX / magnitude;
+  float bulletDirectionY = enemyPlayerY / magnitude;
+  
+  // Inicializar posición de la bala en la posición del enemigo
+  bulletX = enemy.x;
+  bulletY = enemy.y;
+  
+  // Crear círculo que se mueve hacia el jugador
+  fill(255, 0, 0);  // Color rojo para la bala
+  ellipse(bulletX, bulletY, 10, 10);  // Representación visual de la bala
+  
+  // Actualizar posición de la bala en cada ciclo
+  bulletX += bulletDirectionX * bulletSpeed;
+  bulletY += bulletDirectionY * bulletSpeed;
 }
