@@ -1,4 +1,5 @@
 PJ pj;
+Bullet bala;
 Objetivo objetivo;
 float direccionX, direccionY;
 
@@ -6,6 +7,7 @@ float direccionX, direccionY;
 void setup(){
 size(400,800);  
 pj= new PJ();
+bala= new Bullet(200,800);
 objetivo= new Objetivo();
 }
 
@@ -15,6 +17,9 @@ void draw(){
  pj.mover();
  objetivo.dibujar();
 // objetivo.mover();
+  bala.mover();
+  bala.dibujar();
+  
  
  calcularDireccion();
  fill(0);
