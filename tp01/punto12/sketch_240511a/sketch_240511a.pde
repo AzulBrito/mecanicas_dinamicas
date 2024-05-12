@@ -13,6 +13,7 @@ size(400,800);
 pj= new PJ();
 balaslista= new ArrayList<Bullet>();
 objetivo= new Objetivo();
+pj.setObjetivo(objetivo);
 }
 
 void draw(){
@@ -22,7 +23,8 @@ void draw(){
  objetivo.dibujar();
 objetivo.mover();
 balas();
-
+  
+  
    for (int i = balaslista.size() - 1; i >= 0; i--) {
     Bullet unaBala = balaslista.get(i);
     unaBala.dibujar();
