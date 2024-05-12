@@ -1,14 +1,16 @@
 class Bullet{
- int x, y, d;
+ float x, y, d;
  int velocidad;
-  
+  boolean remover;
   //constructor
-  Bullet(int inicioX, int inicioY){
+  Bullet(float inicioX, float inicioY){
     x= inicioX;
     y= inicioY;
     
-    d= 5;
+    d= 15;
     velocidad=15;
+    
+    remover=false;
   }
   void dibujar(){
     circle(x,y,d);
@@ -17,4 +19,10 @@ class Bullet{
   void mover(){
   y-=velocidad;
 }
+void Remover(){
+ if (y<0){
+  remover=true; 
+ }
+}
+
 }

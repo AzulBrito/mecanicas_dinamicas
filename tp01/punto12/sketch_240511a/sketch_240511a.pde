@@ -1,13 +1,17 @@
 PJ pj;
-Bullet bala;
+
 Objetivo objetivo;
 float direccionX, direccionY;
+ArrayList<Bullet> balaslista;
+ArrayList<Bullet> nuevasBalas = new ArrayList<Bullet>();
 
+int tiempoEntreBalas = 30; 
+int contadorTiempo = 0;
 
 void setup(){
 size(400,800);  
 pj= new PJ();
-bala= new Bullet(200,800);
+balaslista= new ArrayList<Bullet>();
 objetivo= new Objetivo();
 }
 
@@ -17,16 +21,30 @@ void draw(){
  pj.mover();
  objetivo.dibujar();
 // objetivo.mover();
-  bala.mover();
-  bala.dibujar();
+balas();
+
+   for (int i = balaslista.size() - 1; i >= 0; i--) {
+    Bullet unaBala = balaslista.get(i);
+    unaBala.dibujar();
+    unaBala.mover();
+    unaBala.Remover();
+    if (unaBala.remover == true) {
+      balaslista.remove(i);
+    }
+  }
   
- 
+  balaslista.addAll(nuevasBalas);
+  nuevasBalas.clear(); 
+  contadorTiempo++;
  calcularDireccion();
+ 
  fill(0);
   text("direccion pj: (" + direccionX + ", " + direccionY + ")", 10, 20);
    stroke(255, 0, 0);  
   strokeWeight(2);
   line(pj.x, pj.y, pj.x + direccionX * 50, pj.y + direccionY * 50);
+  
+  
 }
 
 void calcularDireccion() {
@@ -35,4 +53,11 @@ void calcularDireccion() {
   float magnitud = sqrt(dx * dx + dy * dy);  
   direccionX = dx / magnitud;  
   direccionY = dy / magnitud; 
+}
+
+void  balas(){
+   if (contadorTiempo >= tiempoEntreBalas) {
+    balaslista.add(new Bullet(pj.x, pj.y));
+    contadorTiempo = 0; 
+  }
 }
