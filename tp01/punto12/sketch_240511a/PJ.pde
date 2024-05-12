@@ -12,10 +12,15 @@ class PJ{
     imageMode(CENTER);
     pushMatrix();
     translate(x, y);
-    if (abs(direccionX) <= 1 && abs(direccionY) <= 1) {
-      float angle = atan2(direccionY, direccionX);
+    float dx = objetivo.x - x;
+    float dy = objetivo.y - y;
+    float distancia = sqrt(dx * dx + dy * dy);
+
+    if (distancia <= 200) {
+      float angle = atan2(dy, dx);
       rotate(angle);
     }
+  
     image(tanque, 0, 0);
     popMatrix();
   
@@ -24,4 +29,5 @@ class PJ{
    x=mouseX;
    y=mouseY;
   }
+  
 }

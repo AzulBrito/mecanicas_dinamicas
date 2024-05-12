@@ -2,6 +2,9 @@ class Bullet{
  float x, y, d;
  int velocidad;
   boolean remover;
+  float direccionX, direccionY;
+  
+  
   //constructor
   Bullet(float inicioX, float inicioY){
     x= inicioX;
@@ -11,6 +14,7 @@ class Bullet{
     velocidad=15;
     
     remover=false;
+     calcularDireccion();
   }
   void dibujar(){
     circle(x,y,d);
@@ -20,9 +24,16 @@ class Bullet{
   y-=velocidad;
 }
 void Remover(){
- if (y<0){
+ if (y==width){
   remover=true; 
  }
 }
+void calcularDireccion() {
+    float dx = objetivo.x - x;
+    float dy = objetivo.y - y;
+    float magnitud = sqrt(dx * dx + dy * dy);
+    direccionX = dx / magnitud;
+    direccionY = dy / magnitud;
+  }
 
 }

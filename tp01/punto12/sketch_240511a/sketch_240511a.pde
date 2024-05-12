@@ -20,7 +20,7 @@ void draw(){
  pj.dibujar();
  pj.mover();
  objetivo.dibujar();
-// objetivo.mover();
+objetivo.mover();
 balas();
 
    for (int i = balaslista.size() - 1; i >= 0; i--) {
@@ -36,7 +36,7 @@ balas();
   balaslista.addAll(nuevasBalas);
   nuevasBalas.clear(); 
   contadorTiempo++;
- calcularDireccion();
+ //pj.calcularDireccion();
  
  fill(0);
   text("direccion pj: (" + direccionX + ", " + direccionY + ")", 10, 20);
@@ -46,15 +46,6 @@ balas();
   
   
 }
-
-void calcularDireccion() {
-  float dx = objetivo.x - pj.x; 
-  float dy = objetivo.y - pj.y;  
-  float magnitud = sqrt(dx * dx + dy * dy);  
-  direccionX = dx / magnitud;  
-  direccionY = dy / magnitud; 
-}
-
 void  balas(){
    if (contadorTiempo >= tiempoEntreBalas) {
     balaslista.add(new Bullet(pj.x, pj.y));

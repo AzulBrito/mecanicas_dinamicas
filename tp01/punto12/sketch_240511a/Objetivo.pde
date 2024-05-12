@@ -15,7 +15,7 @@ class Objetivo{
   objetivo.resize(80, 80);
  }
 
-  /*void mover() {
+  void mover() {
     if (moviendoAbajo) {
       y += velocidad;
     } else {
@@ -29,5 +29,5 @@ class Objetivo{
     if (y <= objetivo.height / 2) {
       moviendoAbajo = true;
     }
-  }*/
+  }
 }
