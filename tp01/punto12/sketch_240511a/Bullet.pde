@@ -3,12 +3,15 @@ class Bullet{
  int velocidad;
   boolean remover;
   float direccionX, direccionY;
+  float objetivoX, objetivoY;
   
   
   //constructor
-  Bullet(float inicioX, float inicioY){
+  Bullet(float inicioX, float inicioY, float objetivoX, float objetivoY){
     x= inicioX;
     y= inicioY;
+    this.objetivoX= objetivoX;
+    this.objetivoY= objetivoY;
     
     d= 15;
     velocidad=15;
@@ -21,6 +24,10 @@ class Bullet{
   }
   
   void mover(){
+  float desplazamientoX =direccionX* velocidad;
+   float desplazamientoY =direccionY* velocidad;
+   x+=desplazamientoX;
+   y+=desplazamientoY;
   y-=velocidad;
 }
 void Remover(){
@@ -29,11 +36,11 @@ void Remover(){
  }
 }
 void calcularDireccion() {
-    float dx = objetivo.x - x;
-    float dy = objetivo.y - y;
+    float dx = objetivoX - x;
+    float dy = objetivoY - y;
     float magnitud = sqrt(dx * dx + dy * dy);
     direccionX = dx / magnitud;
-    direccionY = dy / magnitud;
+    direccionY = 0 / magnitud;
   }
 
 }

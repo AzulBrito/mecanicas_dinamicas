@@ -28,6 +28,7 @@ balas();
    for (int i = balaslista.size() - 1; i >= 0; i--) {
     Bullet unaBala = balaslista.get(i);
     unaBala.dibujar();
+    unaBala.calcularDireccion();
     unaBala.mover();
     unaBala.Remover();
     if (unaBala.remover == true) {
@@ -39,18 +40,21 @@ balas();
   nuevasBalas.clear(); 
   contadorTiempo++;
  //pj.calcularDireccion();
- 
- fill(0);
-  text("direccion pj: (" + direccionX + ", " + direccionY + ")", 10, 20);
-   stroke(255, 0, 0);  
-  strokeWeight(2);
-  line(pj.x, pj.y, pj.x + direccionX * 50, pj.y + direccionY * 50);
+
+fill(0);
+  text("Posición actual del objetivo: (" + objetivo.x + ", " + objetivo.y + ")", 10, 40);
   
   
 }
-void  balas(){
-   if (contadorTiempo >= tiempoEntreBalas) {
-    balaslista.add(new Bullet(pj.x, pj.y));
-    contadorTiempo = 0; 
+void balas() {
+  float dx = objetivo.x - pj.x; 
+  float dy = objetivo.y - pj.y;
+  float distancia = sqrt(dx * dx + dy * dy);
+  if(distancia <= 200) {
+    if (contadorTiempo >= tiempoEntreBalas) {
+      objetivo.mover();
+      balaslista.add(new Bullet(pj.x, pj.y, objetivo.x, objetivo.y));
+      contadorTiempo = 0;
+    }
   }
 }
