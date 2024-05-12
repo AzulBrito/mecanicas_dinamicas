@@ -31,7 +31,8 @@ balas();
     unaBala.calcularDireccion();
     unaBala.mover();
     unaBala.Remover();
-    if (unaBala.remover == true) {
+    
+    if (unaBala.remover) {
       balaslista.remove(i);
     }
   }

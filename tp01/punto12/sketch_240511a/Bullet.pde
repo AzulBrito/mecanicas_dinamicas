@@ -23,13 +23,25 @@ class Bullet{
     circle(x,y,d);
   }
   
-  void mover(){
-  float desplazamientoX =direccionX* velocidad;
-   float desplazamientoY =direccionY* velocidad;
-   x+=desplazamientoX;
-   y+=desplazamientoY;
-  y-=velocidad;
+void mover() {
+  float dx = objetivoX - x;
+  float dy = objetivoY - y;
+  float distancia = sqrt(dx * dx + dy * dy);
+
+  if (distancia <= 10) { 
+    remover = true;
+  } else {
+    float magnitud = sqrt(dx * dx + dy * dy);
+    direccionX = dx / magnitud;
+    direccionY = dy / magnitud;
+
+    float desplazamientoX = direccionX * velocidad;
+    float desplazamientoY = direccionY * velocidad;
+    x += desplazamientoX;
+    y += desplazamientoY;
+  }
 }
+
 void Remover(){
  if (y==width){
   remover=true; 
