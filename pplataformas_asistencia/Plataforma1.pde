@@ -13,6 +13,18 @@ class Plataforma {
     rect(this.pos.x, this.pos.y, 100, 30);
   }
   
-  
-  
+    public void movimientoSino() {
+    fill(#002CFC);
+    int segundos = millis()/1000;
+    this.pos.y += this.amplitud * (sin(segundos) * this.velocidad);
+  }
+   public PVector getPos() {
+    return this.pos;
+  }
+  public float getVelocidad() {
+    return this.velocidad;
+  }
+  public float getAmplitud() {
+    return this.amplitud;
+  }
 }
