@@ -18,6 +18,13 @@ class Plataforma {
     int segundos = millis()/1000;
     this.pos.y += this.amplitud * (sin(segundos) * this.velocidad);
   }
+  
+  public void movimientoCos() {
+    fill(#B14AFC);
+    int segundos = millis()/1000;
+    this.pos.x += this.amplitud * (cos(segundos) * this.velocidad);
+  }
+  
    public PVector getPos() {
     return this.pos;
   }

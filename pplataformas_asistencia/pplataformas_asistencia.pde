@@ -1,8 +1,9 @@
-Plataforma plataforma;
+Plataforma plataforma, plataforma2;
 
 void setup(){
  size (800,800); 
  plataforma = new Plataforma(new PVector(width/2, height/2 - 160), 2, 2);
+  plataforma2 = new Plataforma(new PVector(width/2-170, 700), 2, 3);
 }
 
 void draw(){
@@ -12,4 +13,6 @@ void draw(){
    plataforma.dibujar();
    plataforma.movimientoSino();
    
+  plataforma2.dibujar();
+  plataforma2.movimientoCos();
 }
