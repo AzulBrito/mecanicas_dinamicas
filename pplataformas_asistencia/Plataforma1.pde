@@ -2,15 +2,17 @@ class Plataforma {
  private PVector pos; 
  private float velocidad;
  private float amplitud;
+ private PImage img;
  
-  public Plataforma(PVector pos, float velocidad, float amplitud) {
+  public Plataforma(PVector pos, float velocidad, float amplitud,PImage img) {
     this.pos = pos;
     this.velocidad = velocidad;
     this.amplitud = amplitud;
+    this.img=img;
   }
   
     public void dibujar() {
-    rect(this.pos.x, this.pos.y, 100, 30);
+    image(img, pos.x, pos.y);
   }
   
     public void movimientoSino() {
@@ -20,7 +22,7 @@ class Plataforma {
   }
   
   public void movimientoCos() {
-    fill(#B14AFC);
+    //fill(#B14AFC);
     int segundos = millis()/1000;
     this.pos.x += this.amplitud * (cos(segundos) * this.velocidad);
   }
